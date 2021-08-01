@@ -157,15 +157,17 @@ let users = [
     cell  : '01773980593',
     age   : '23',
     gender    : 'Male',
-    location  : 'Mirpur',
+    location  : 'Gulsan',
     desc  : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, odio.',
   },
 ];
 
 
 // get selectors
-let team = document.querySelector('#team');
-let gender = document.querySelectorAll('input[name="gender"]');
+let team      = document.querySelector('#team');
+let gender    = document.querySelectorAll('input[name="gender"]');
+let locations = document.querySelectorAll('.checkbox');
+
 
 
 showUsers();
@@ -189,7 +191,7 @@ function showUsers(){
 }
 
 
-// search by gender
+// filter by gender
 for(let i = 0; i < gender.length; i++){
   gender[i].onchange = () => {
     team.innerHTML = '';
@@ -212,4 +214,51 @@ for(let i = 0; i < gender.length; i++){
       }
     });
   }
+}
+
+
+let list_location = [];
+// filter by location
+for(let location of locations){
+  location.addEventListener('click', function() {
+    team.innerHTML = '';
+    if(this.checked == true){
+      list_location.push(this.value);
+      locationWiseUser(list_location);
+      // console.log(list_location);
+    }else {
+      list_location = list_location.filter(e => e !== this.value);
+      locationWiseUser(list_location);
+      // console.log(list_location);
+      if(list_location.length == 0){
+        showUsers();
+      }
+    }
+  });
+}
+
+
+// location wise filter function 
+function locationWiseUser(location){
+  for(let loc of location){
+    users.map(user => {
+     if(user.location.toLocaleLowerCase() == loc){
+        team.innerHTML += `<div class="col-md-4 mb-4">
+                            <div class="card shadow cd">
+                              <div class="card-body slider">
+                                <img class="shadow-lg" src="users/${user.photo}" alt="">
+                                <h2>${user.name}</h2>
+                                <h5>${user.skill}</h5>
+                                <h5>${user.cell}</h5>
+                                <h6>${user.age} years old</h6>
+                                <h6>${user.location}</h6>
+                                <p>${user.desc}</p>
+                              </div>
+                            </div>
+                          </div>`;
+
+      }
+    });
+  }
+  
 }
