@@ -3,10 +3,51 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Montserrat;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
+.slider {
+  background-image: linear-gradient(45deg, #00f260, #0575e6);
+  text-align: center;
+  font-family: subway;
+  color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+}
 
+.cd {
+  border-radius: 5px;
+}
+
+.slider img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 10px solid #fff;
+}
+
+.slider h5, h6 {
+  
+  font-size: 18px;
+}
+
+.slider p {
+  font-size: 14px;
+}
+
+.filter {
+  width: 150px;
+  height: 300px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  margin: auto;
+}
+
+.filter label {
+  margin-left: 10px;
+}
 
 
