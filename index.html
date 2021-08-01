@@ -13,6 +13,28 @@
 
 <body>
 
+  <!-- Start Slider -->
+  <section class="slider_fetch">
+    <div class="container w-75 mt-5">
+      <div class="slider-container">
+        <div class="slider_1">
+          <img class="shadow-lg" src="assets/img/1.jpg" alt="">
+          <h2 class="name">Salim Hasan</h2>
+          <h5 class="skill">JavaScript Dev</h5>
+          <h5 class="cell">01773980593</h5>
+          <h6 class="age">25 years old</h6>
+          <h6 class="location">Mirpur</h6>
+          <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, illo.</p>
+        </div>
+        <div class="nav">
+          <button class="btn btn-success btn-sm" id="prev">Prev</button>&nbsp;
+          <button class="btn btn-primary btn-sm" id="next">Next</button>
+        </div>
+      </div>
+    </div>
+  </section> <!-- End Slider -->
+
+  <!-- Start Filter -->
   <section id="array__data-fetch">
 
     <div class="filter">
@@ -29,7 +51,8 @@
           <input type="checkbox" class="checkbox" id="Uttara" value="uttara"><label for="Uttara">Uttara</label><br>
           <input type="checkbox" class="checkbox" id="Gulsan" value="gulsan"><label for="Gulsan">Gulsan</label><br>
           <hr>
-          <input type="text" class="form-control">
+          <input type="text" name="search" class="form-control" placeholder="Age" onkeyup="searchUser()"
+            autocomplete="off">
         </div>
       </div>
     </div>
@@ -42,7 +65,7 @@
 
       </div>
     </div>
-  </section>
+  </section><!-- End Filter -->
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

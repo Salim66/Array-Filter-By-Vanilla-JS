@@ -163,12 +163,68 @@ let users = [
 ];
 
 
-// get selectors
+// filter get selectors
 let team      = document.querySelector('#team');
 let gender    = document.querySelectorAll('input[name="gender"]');
 let locations = document.querySelectorAll('.checkbox');
 
+// slider get selectors
+let photo      = document.querySelector('.slider_1 img');
+let name       = document.querySelector('.slider_1 .name');
+let skill      = document.querySelector('.slider_1 .skill');
+let cell       = document.querySelector('.slider_1 .cell');
+let age        = document.querySelector('.slider_1 .age');
+let location_1 = document.querySelector('.slider_1 .location');
+let desc       = document.querySelector('.slider_1 .desc');
+let prev       = document.querySelector('.nav #prev');
+let next       = document.querySelector('.nav #next');
 
+
+
+//========== Slider section ==========//
+
+let default_index = 0;
+//===== next slide =====//
+next.onclick = () => {
+  if(default_index >= users.length-1){
+    default_index = 0;
+  }
+
+  userShowSlider(default_index);
+  default_index++;
+
+} 
+
+//===== previous slide =====//
+prev.onclick = () => {
+  if(default_index < 0){
+    default_index = users.length - 1;
+  }
+
+  userShowSlider(default_index);
+  default_index--;
+
+} 
+
+
+
+
+userShowSlider(0);
+function userShowSlider(index = 0){
+  photo.setAttribute('src', 'users/'+users[index].photo);
+  name.innerHTML       = users[index].name;
+  skill.innerHTML      = users[index].skill;
+  cell.innerHTML       = users[index].cell;
+  age.innerHTML        = users[index].age+' years old';
+  location_1.innerHTML = users[index].location;
+  desc.innerHTML       = users[index].desc;
+}
+
+
+
+
+
+//========== filter section ==========//
 
 showUsers();
 // show all user function 
@@ -262,3 +318,36 @@ function locationWiseUser(location){
   }
   
 }
+
+
+
+// filter by search panel
+function searchUser(){
+  team.innerHTML = '';
+  let search = document.querySelector('input[name="search"]').value;
+  users.map(user => {
+    if(user.age.toLocaleLowerCase() == search || search == ''){
+      team.innerHTML += `<div class="col-md-4 mb-4">
+                          <div class="card shadow cd">
+                            <div class="card-body slider">
+                              <img class="shadow-lg" src="users/${user.photo}" alt="">
+                              <h2>${user.name}</h2>
+                              <h5>${user.skill}</h5>
+                              <h5>${user.cell}</h5>
+                              <h6>${user.age} years old</h6>
+                              <h6>${user.location}</h6>
+                              <p>${user.desc}</p>
+                            </div>
+                          </div>
+                        </div>`;
+    }else {
+      // console.log();
+      // if(users[1].age == user.age){
+      //   team.innerHTML += `
+      //                     <h2 class="m-auto" style="color: red;">Not found!</h2>
+      //                   `;
+      // }
+    }
+  });
+}
+
