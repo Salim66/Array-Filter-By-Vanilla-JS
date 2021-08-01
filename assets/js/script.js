@@ -186,6 +186,9 @@ let next       = document.querySelector('.nav #next');
 let default_index = 0;
 //===== next slide =====//
 next.onclick = () => {
+
+  clearInterval(start_slider);
+
   if(default_index >= users.length-1){
     default_index = 0;
   }
@@ -197,6 +200,9 @@ next.onclick = () => {
 
 //===== previous slide =====//
 prev.onclick = () => {
+
+  clearInterval(start_slider);
+
   if(default_index < 0){
     default_index = users.length - 1;
   }
