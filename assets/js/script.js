@@ -221,6 +221,17 @@ function userShowSlider(index = 0){
 }
 
 
+//====== Auto slider load ======//
+let start_slider = setInterval(()=>{
+  if(default_index >= users.length-1){
+    default_index = 0;
+  }
+
+  userShowSlider(default_index);
+  default_index++;
+}, 1000);
+
+
 
 
 
